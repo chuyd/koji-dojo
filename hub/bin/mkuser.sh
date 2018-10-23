@@ -14,10 +14,7 @@ if [ "x$user" == "x" ]; then
 fi
 
 if [ "x$kind" == "xbuilder" ]; then
-	echo "Add builder $user"
-	echo "INSERT INTO users (name, status, usertype) VALUES ('${user}', 0, 1);" | $psql
-	echo "INSERT INTO host (id, user_id, name, arches) SELECT nextval('host_id_seq'), users.id, '${user}', 'x86_64' FROM users WHERE name = '${user}';" | $psql
-	echo "INSERT INTO host_channels (host_id, channel_id) SELECT (SELECT id FROM host WHERE name = '${user}') as host_id, channels.id FROM channels WHERE name in ('default', 'createrepo', 'maven');" | $psql
+echo "user will be added later"
 else
 	echo "Add user ${user}"
 	echo "INSERT INTO users (name, status, usertype) VALUES ('${user}', 0, 0);" | $psql

@@ -13,8 +13,12 @@ koji-hub:
     volumes:
         - /opt/koji:/opt/koji:rw,z
         - /opt/koji-clients:/opt/koji-clients:rw,z
+        - /mnt/koji:/mnt/koji:rw,z
     links:
         - koji-db
+    ports:
+        - "80:80"
+
 
 koji-client:
     build: client
